@@ -1,6 +1,7 @@
 package com.example.pw_autorizacion_u4_aa.repo.model;
 
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "usuario")

@@ -1,9 +1,5 @@
 package com.example.pw_autorizacion_u4_aa.service.to;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
