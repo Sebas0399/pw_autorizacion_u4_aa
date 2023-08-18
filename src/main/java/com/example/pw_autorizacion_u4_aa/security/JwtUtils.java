@@ -27,4 +27,13 @@ LOG.info("Semilla: "+jwtSecret);
                 setExpiration(new Date(System.currentTimeMillis() + this.jwtExpiration)).
                 signWith(SignatureAlgorithm.HS512, this.jwtSecret).compact();
     }
+    public String generateJwtToken(String name) {
+        LOG.info("Semilla: "+jwtSecret);
+        LOG.info("Tiempo: "+jwtExpiration);
+
+        return Jwts.builder().setSubject(name).
+                setIssuedAt(new Date()).
+                setExpiration(new Date(System.currentTimeMillis() + this.jwtExpiration)).
+                signWith(SignatureAlgorithm.HS512, this.jwtSecret).compact();
+    }
 }

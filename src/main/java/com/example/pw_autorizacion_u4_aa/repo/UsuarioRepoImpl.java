@@ -15,7 +15,7 @@ public class UsuarioRepoImpl implements IUsuarioRepo{
     private EntityManager entityManager;
     @Override
     public Usuario readByUserName(String userName) {
-        TypedQuery<Usuario> myQuery=this.entityManager.createQuery("SELECT u FROM Usuario u WHERE u.nombre:=userName", Usuario.class);
+        TypedQuery<Usuario> myQuery=this.entityManager.createQuery("SELECT u FROM Usuario u WHERE u.nombre=:userName", Usuario.class);
         myQuery.setParameter("userName",userName);
         return myQuery.getSingleResult();
     }

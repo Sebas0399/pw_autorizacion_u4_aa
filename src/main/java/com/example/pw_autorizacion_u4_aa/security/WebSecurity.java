@@ -23,13 +23,12 @@ public class WebSecurity {
     @Bean
 
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.cors()
-                .and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
+        httpSecurity.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().authorizeRequests().antMatchers("/API/1.0/Autorizacion/tokens/obtener/**")
-                .permitAll().anyRequest().authenticated();
+                .and().authorizeRequests()
+                .antMatchers("/tokens/obtener/**").permitAll().anyRequest().authenticated();
         httpSecurity.authenticationProvider(this.authenticationProvider());
-        return httpSecurity.build();
+         return httpSecurity.build();
 
     }
     @Bean
