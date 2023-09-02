@@ -1,6 +1,7 @@
 package com.example.pw_autorizacion_u4_aa.controller;
 
 import com.example.pw_autorizacion_u4_aa.security.JwtUtils;
+import com.example.pw_autorizacion_u4_aa.service.to.TokenTO;
 import com.example.pw_autorizacion_u4_aa.service.to.UsuarioTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,5 +33,13 @@ public class TokenControllerRestFul {
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
+    @GetMapping("/simple/{semilla}/{vigencia}")
+    public String getToken(@PathVariable String semilla,@PathVariable Long vigencia){
+        UsuarioTO usuario=new UsuarioTO();
+        usuario.setNombre("antony");
+        usuario.setPassword("1234");
+        this.autenticated(usuario.getNombre(), usuario.getPassword());
+        return this.jwtUtils.generateJwtToken(usuario.getNombre(),semilla,vigencia);
+    }
 
 }

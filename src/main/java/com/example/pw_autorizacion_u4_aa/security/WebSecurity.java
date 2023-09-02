@@ -26,7 +26,7 @@ public class WebSecurity {
         httpSecurity.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().authorizeRequests()
-                .antMatchers("/tokens/obtener/**").permitAll().anyRequest().authenticated();
+                .antMatchers("/tokens/**/**").permitAll().anyRequest().authenticated();
         httpSecurity.authenticationProvider(this.authenticationProvider());
          return httpSecurity.build();
 
